@@ -7,6 +7,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableShutdownHooks();
   await app.listen(PORT);
-  console.log('Using port:' + PORT);
+  console.log('Listening port: ' + PORT);
 }
 bootstrap();
