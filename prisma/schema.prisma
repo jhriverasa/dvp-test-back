@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Using mysql provider
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Types based on Github API Schema (https://docs.github.com/en/rest/users/users?apiVersion=2022-11-28#list-users)
+// Selected only the ones that are available in Front  (Detailed view of a profile)
+model User {
+  id           Int      @id @default(autoincrement())
+  login        String   @unique
+  avatar_url   String
+  name         String
+  followers    Int
+  public_repos Int
+  public_gists Int
+  html_url     String
+  email        String?
+  location     String?
+  bio          String?
+  company      String?
+  // Timestamps
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
